@@ -40,7 +40,11 @@ The **University Front Door Support Agent** is a solution accelerator that enabl
 
 **🎯 Target Impact**: Increase first-contact resolution from **40%** to **65%**
 
-![Solution Architecture](./docs/images/architecture-diagram.png)
+### 🏛️ Solution Architecture
+
+![Solution Architecture](./docs/images/architecture-overview.jpg)
+
+*The solution architecture spans five layers: User Layer (students, faculty, staff accessing via web/mobile), Front Layer (React application), Middle Layer (FastAPI with three AI agents), AI Services Layer (GPT-4o and Azure AI Search), and Data Layer (session storage and knowledge base), all secured by Azure Key Vault and Container Registry.*
 
 ---
 
@@ -173,40 +177,17 @@ docker-compose up --build
 
 ## 🏗️ Architecture
 
-```
-                          +------------------+
-                          |   🎓 Students    |
-                          +--------+---------+
-                                   |
-                                   v
-+------------------------------------------------------------------+
-|                   🌐 Azure Static Web Apps                        |
-|               React 18 + TypeScript + Tailwind                   |
-+------------------------------------------------------------------+
-                                   |
-                                   v
-+------------------------------------------------------------------+
-|                    📦 Azure Container Apps                        |
-|  +---------------+  +---------------+  +------------------+      |
-|  | 🔍 Query      |->| 🔀 Router     |->| ⚡ Action        |      |
-|  | Agent         |  | Agent         |  | Agent            |      |
-|  | (Intent)      |  | (Decisions)   |  | (Tickets + KB)   |      |
-|  +---------------+  +---------------+  +------------------+      |
-+------------------------------------------------------------------+
-         |                    |                     |
-         v                    v                     v
-+----------------+   +----------------+   +------------------+
-| 🤖 Azure       |   | 🗄️ Azure       |   | 🔍 Azure AI      |
-| OpenAI         |   | Cosmos DB      |   | Search           |
-| (GPT-4o)       |   | (Sessions)     |   | (Knowledge Base) |
-+----------------+   +----------------+   +------------------+
-                                                   |
-                                                   v
-                                          +------------------+
-                                          | 🎫 ServiceNow    |
-                                          | (Ticketing)      |
-                                          +------------------+
-```
+### 🔄 Three-Agent Conversation Flow
+
+![Agent Workflow](./docs/images/agent-workflow.jpg)
+
+*The three-agent system processes each user query through a coordinated pipeline: **QueryAgent** classifies intent (financial aid, registration, housing, technical support, general), **RouterAgent** searches Azure AI Search for relevant KB articles, and **ActionAgent** generates contextual responses and determines if a support ticket is needed.*
+
+### 🏗️ Azure Infrastructure
+
+![Deployment Infrastructure](./docs/images/deployment-infrastructure.jpg)
+
+*All resources are deployed within a single resource group (`rg-frontdoor-{env}`), including Azure OpenAI Service with GPT-4o, Container Apps for the backend, Static Web Apps for the React frontend, Cosmos DB (Serverless) for session storage, AI Search for the knowledge base, Key Vault for secrets, and Container Registry for Docker images.*
 
 ### ☁️ Azure Services Used
 
@@ -224,14 +205,20 @@ docker-compose up --build
 
 ## 💰 Cost Estimate
 
-### 📊 Monthly Cost by Scale
+### 📊 Deployment Scale Options
+
+![Cost Tiers](./docs/images/cost-tiers.jpg)
+
+*Choose your deployment scale based on user count: Development (1-10 users, GPT-4o-mini, $50-100/mo), Small Pilot (100-500 users, GPT-4o, $160-305/mo), Medium Scale (500-2000 users, provisioned Cosmos DB, $400-700/mo), or Production (2000-10000 users, 2+ vCPU, $1K-2.5K/mo).*
+
+### 📋 Monthly Cost Summary
 
 | Scale | Users | Monthly Cost | Status |
 |-------|------:|-------------:|:------:|
-| 🧪 Development | <50 | $50-100 | ✅ Ready |
-| 🚀 Small Pilot | 500 | $160-305 | ✅ Ready |
-| 📈 Medium | 2,000 | $400-700 | ✅ Ready |
-| 🏢 Production | 10,000+ | $1,000-2,500 | ✅ Ready |
+| 🧪 Development | 1-10 | $50-100 | ✅ Ready |
+| 🚀 Small Pilot | 100-500 | $160-305 | ✅ Ready |
+| 📈 Medium | 500-2,000 | $400-700 | ✅ Ready |
+| 🏢 Production | 2,000-10,000 | $1,000-2,500 | ✅ Ready |
 
 ```
 Cost Breakdown (Small Pilot - 500 users):
