@@ -659,8 +659,8 @@ Need help implementing these customizations?
 | Resource | Description |
 |----------|-------------|
 | 📖 [Main Customization Guide](./CUSTOMIZATION.md) | Step-by-step instructions |
-| 💰 [Cost Estimation](./COST_ESTIMATION.md) | Azure pricing details |
-| 🚀 [Accelerator README](../README.md) | Deployment guide |
+| 💰 [Cost Estimation](../deployment/COST_ESTIMATION.md) | Azure pricing details |
+| 🚀 [Project README](../../README.md) | Deployment guide |
 
 ---
 

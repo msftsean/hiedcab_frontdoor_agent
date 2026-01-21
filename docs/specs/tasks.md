@@ -1,6 +1,6 @@
 # Tasks: Universal Front Door Support Agent
 
-**Input**: Design documents from `/specs/1-front-door-agent/`
+**Input**: Design documents from `/docs/specs/`
 **Prerequisites**: plan.md (required), spec.md (required), research.md, data-model.md, contracts/api.yaml
 
 **Tests**: Tests are included per Constitution Principle V (Test-First Development).

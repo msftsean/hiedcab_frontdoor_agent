@@ -710,7 +710,7 @@ After completing your customization:
 | Step | Task | Documentation |
 |:----:|------|---------------|
 | 1️⃣ | Deploy to Azure | Run `azd up` |
-| 2️⃣ | Connect SSO | See [Security Guide](../README.md#-security-considerations) |
+| 2️⃣ | Connect SSO | See [Project README](../../README.md) |
 | 3️⃣ | Import KB | See [Knowledge Base Setup](#-knowledge-base-setup) |
 | 4️⃣ | Configure ServiceNow | See deployment docs |
 | 5️⃣ | Pilot testing | Run with small group |

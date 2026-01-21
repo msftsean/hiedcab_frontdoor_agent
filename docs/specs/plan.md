@@ -1,7 +1,7 @@
 # Implementation Plan: Universal Front Door Support Agent
 
 **Branch**: `1-front-door-agent` | **Date**: 2026-01-20 | **Spec**: [spec.md](spec.md)
-**Input**: Feature specification from `/specs/1-front-door-agent/spec.md`
+**Input**: Feature specification from `/docs/specs/spec.md`
 
 ## Summary
 
@@ -44,7 +44,7 @@ Build a three-agent system (QueryAgent, RouterAgent, ActionAgent) that provides 
 ### Documentation (this feature)
 
 ```text
-specs/1-front-door-agent/
+docs/specs/
 ├── spec.md              # Feature specification
 ├── plan.md              # This file
 ├── research.md          # Phase 0 output
